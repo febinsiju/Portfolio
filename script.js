@@ -1,13 +1,18 @@
-console.log("Portfolio loaded successfully!");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-document.querySelectorAll("nav a").forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const section = document.querySelector(this.getAttribute("href"));
-
-    section.scrollIntoView({
-      behavior: "smooth"
-    });
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.forEach(item => item.classList.remove("active"));
+    link.classList.add("active");
   });
+});
+
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+
+  if (window.scrollY > 50) {
+    navbar.style.background = "rgba(3, 3, 10, 0.95)";
+  } else {
+    navbar.style.background = "rgba(3, 3, 10, 0.8)";
+  }
 });
